@@ -55,6 +55,7 @@
 
             LD_LIBRARY_PATH = lib.makeLibraryPath buildInputs;
             DYLD_LIBRARY_PATH = lib.makeLibraryPath buildInputs;
+            FONTCONFIG_FILE = pkgs.makeFontsConf { fontDirectories = [ ]; };
           };
         };
     };
