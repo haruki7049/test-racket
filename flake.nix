@@ -38,10 +38,23 @@
             programs.shfmt.enable = true;
           };
 
-          devShells.default = pkgs.mkShell {
+          devShells.default = pkgs.mkShell rec {
             nativeBuildInputs = [
               pkgs.racket-minimal
             ];
+
+            buildInputs = [
+              pkgs.fontconfig.lib
+              pkgs.zlib
+              pkgs.cairo
+              pkgs.libpng
+              pkgs.libjpeg
+              pkgs.glib.out
+              pkgs.pango
+            ];
+
+            LD_LIBRARY_PATH = lib.makeLibraryPath buildInputs;
+            DYLD_LIBRARY_PATH = lib.makeLibraryPath buildInputs;
           };
         };
     };
